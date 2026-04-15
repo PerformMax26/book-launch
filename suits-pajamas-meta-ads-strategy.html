@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta Ads Strategy | Suits & Pajamas Book Launch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --charcoal: #2C2422;
+      --dusty-rose: #8B454F;
+      --dusty-rose-light: #A85A65;
+      --warm-tan: #C4A98F;
+      --cream: #FDFAF8;
+      --cream-dark: #F5EDE8;
+      --muted: #6B5A55;
+      --soft-gray: #9A8A85;
+      --success: #4A7C59;
+      --info: #4A6FA5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* Preloader */
+    .preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--charcoal);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .preloader-logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .preloader-icon {
+      width: 50px;
+      height: 50px;
+      position: relative;
+    }
+
+    .preloader-icon::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 25px;
+      height: 50px;
+      background: var(--cream);
+      border-radius: 4px 0 0 4px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .preloader-icon::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 25px;
+      height: 50px;
+      background: var(--warm-tan);
+      border-radius: 0 25px 25px 0;
+      animation: pulse 1.5s ease-in-out infinite 0.2s;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    .preloader-text {
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+    }
+
+    .loading-bar {
+      width: 200px;
+      height: 2px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+      margin-top: 2rem;
+      overflow: hidden;
+    }
+
+    .loading-bar::after {
+      content: '';
+      display: block;
+      width: 40%;
+      height: 100%;
+      background: var(--dusty-rose);
+      animation: loading 1.5s ease-in-out infinite;
+    }
+
+    @keyframes loading {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(350%); }
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(253,250,248,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(139,69,79,0.1);
+      transform: translateY(-100%);
+      animation: slideDown 0.6s ease 2s forwards;
+    }
+
+    @keyframes slideDown {
+      to { transform: translateY(0); }
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      position: relative;
+    }
+
+    .nav-logo-icon::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 18px;
+      height: 36px;
+      background: var(--charcoal);
+      border-radius: 3px 0 0 3px;
+    }
+
+    .nav-logo-icon::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 18px;
+      height: 36px;
+      background: var(--warm-tan);
+      border-radius: 0 18px 18px 0;
+    }
+
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.1;
+    }
+
+    .nav-logo-text span {
+      display: block;
+    }
+
+    .nav-logo-text span:last-child {
+      font-style: italic;
+      color: var(--dusty-rose);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--dusty-rose);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(139,69,79,0.05) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(196,169,143,0.08) 0%, transparent 50%);
+      animation: bgFloat 20s ease-in-out infinite;
+    }
+
+    @keyframes bgFloat {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-2%, 2%) rotate(1deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.25rem;
+      background: rgba(139,69,79,0.1);
+      color: var(--dusty-rose);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 30px;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 2.2s forwards;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--dusty-rose);
+      border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 2.4s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--dusty-rose);
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 2.6s forwards;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 2.8s forwards;
+    }
+
+    .meta-item {
+      text-align: center;
+    }
+
+    .meta-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: var(--dusty-rose);
+      line-height: 1;
+    }
+
+    .meta-label {
+      font-size: 0.75rem;
+      color: var(--soft-gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 0.5rem;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--dusty-rose);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 3s forwards;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--dusty-rose), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50% { transform: scaleY(0.5); opacity: 0.5; }
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .section-dark {
+      background: var(--charcoal);
+      color: var(--cream);
+    }
+
+    .section-alt {
+      background: var(--cream-dark);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--dusty-rose);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .section-title span {
+      color: var(--dusty-rose);
+      font-style: italic;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, var(--warm-tan), var(--dusty-rose), var(--warm-tan), transparent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-item:nth-child(odd) {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      text-align: right;
+      padding-right: 4rem;
+      padding-left: 0;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      padding-left: 4rem;
+    }
+
+    .timeline-content {
+      flex: 1;
+    }
+
+    .timeline-marker {
+      width: 60px;
+      height: 60px;
+      background: var(--charcoal);
+      border: 3px solid var(--dusty-rose);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--cream);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 0 8px var(--cream);
+    }
+
+    .timeline-date {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dusty-rose);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-tasks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-tasks {
+      justify-content: flex-end;
+    }
+
+    .task-tag {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: rgba(139,69,79,0.1);
+      color: var(--dusty-rose);
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: 20px;
+    }
+
+    /* Phase Cards */
+    .phases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .phase-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(139,69,79,0.1);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .phase-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .phase-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--dusty-rose), var(--warm-tan));
+    }
+
+    .phase-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(44,36,34,0.1);
+    }
+
+    .phase-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--charcoal);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      border-radius: 50%;
+      margin-bottom: 1.25rem;
+    }
+
+    .phase-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .phase-dates {
+      font-size: 0.8rem;
+      color: var(--dusty-rose);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .phase-goal {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .phase-list {
+      list-style: none;
+    }
+
+    .phase-list li {
+      position: relative;
+      padding-left: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .phase-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 6px;
+      height: 6px;
+      background: var(--dusty-rose);
+      border-radius: 50%;
+    }
+
+    /* Audience Section */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .audience-card {
+      background: rgba(253,250,248,0.05);
+      border: 1px solid rgba(196,169,143,0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .audience-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .audience-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(139,69,79,0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .audience-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--cream);
+    }
+
+    .audience-list {
+      list-style: none;
+    }
+
+    .audience-list li {
+      font-size: 0.9rem;
+      color: var(--soft-gray);
+      margin-bottom: 0.5rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .audience-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--warm-tan);
+    }
+
+    /* Creative Hooks */
+    .hooks-container {
+      display: grid;
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hook-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      background: var(--cream);
+      border-radius: 16px;
+      border: 1px solid rgba(139,69,79,0.1);
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.6s ease;
+    }
+
+    .hook-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .hook-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 30px rgba(44,36,34,0.08);
+    }
+
+    .hook-type {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--dusty-rose);
+      min-width: 100px;
+    }
+
+    .hook-text {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--charcoal);
+      flex: 1;
+    }
+
+    /* Video References */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .video-card {
+      background: var(--cream);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(139,69,79,0.1);
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.6s ease;
+    }
+
+    .video-card.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(44,36,34,0.1);
+    }
+
+    .video-thumb {
+      height: 140px;
+      background: linear-gradient(135deg, var(--charcoal), #1a1614);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .video-thumb::after {
+      content: '▶';
+      width: 50px;
+      height: 50px;
+      background: var(--dusty-rose);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cream);
+      font-size: 1rem;
+      padding-left: 4px;
+    }
+
+    .video-info {
+      padding: 1.25rem;
+    }
+
+    .video-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .video-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .video-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--dusty-rose);
+      text-decoration: none;
+    }
+
+    .video-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Testing Section */
+    .testing-card {
+      background: linear-gradient(135deg, var(--dusty-rose), #6D363E);
+      border-radius: 24px;
+      padding: 3rem;
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testing-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .testing-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .testing-title {
+      font-size: 1.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .testing-desc {
+      font-size: 1rem;
+      opacity: 0.9;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .testing-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .testing-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .testing-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      background: var(--cream);
+      color: var(--dusty-rose);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 8rem 2rem;
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(139,69,79,0.15) 0%, transparent 70%);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-title span {
+      color: var(--dusty-rose);
+      font-style: italic;
+    }
+
+    .cta-subtitle {
+      font-size: 1.1rem;
+      color: var(--soft-gray);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2.5rem;
+      background: linear-gradient(135deg, var(--dusty-rose), #6D363E);
+      color: var(--cream);
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(139,69,79,0.4);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 3rem 2rem;
+      background: #1a1614;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-text {
+      color: var(--soft-gray);
+      font-size: 0.85rem;
+    }
+
+    .footer-text a {
+      color: var(--warm-tan);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .timeline::before {
+        left: 30px;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(odd) {
+        flex-direction: column;
+      }
+
+      .timeline-content,
+      .timeline-item:nth-child(odd) .timeline-content {
+        text-align: left;
+        padding-left: 5rem;
+        padding-right: 0;
+      }
+
+      .timeline-marker {
+        position: absolute;
+        left: 0;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-tasks {
+        justify-content: flex-start;
+      }
+
+      .testing-content {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-meta {
+        gap: 2rem;
+      }
+
+      .section {
+        padding: 4rem 1.5rem;
+      }
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--dusty-rose), var(--warm-tan));
+      z-index: 1000;
+      width: 0%;
+      transition: width 0.1s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-logo">
+      <div class="preloader-icon"></div>
+    </div>
+    <p class="preloader-text">Loading your strategy...</p>
+    <div class="loading-bar"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <div class="nav-logo-icon"></div>
+      <div class="nav-logo-text">
+        <span>Suits &</span>
+        <span>Pajamas™</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#phases">Phases</a></li>
+      <li><a href="#audience">Audience</a></li>
+      <li><a href="#creative">Creative</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Meta Ads Strategy</div>
+      <h1 class="hero-title serif">The suit she wore.<br><em>The soul she kept.</em></h1>
+      <p class="hero-subtitle">A comprehensive paid media strategy for the Suits & Pajamas book launch — designed to build anticipation, capture leads, and drive conversions.</p>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <div class="meta-value">4</div>
+          <div class="meta-label">Campaign Phases</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-value">6</div>
+          <div class="meta-label">Weeks Active</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-value">May 31</div>
+          <div class="meta-label">Launch Target</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="section section-alt" id="timeline">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Roadmap</span>
+        <h2 class="section-title serif">Campaign <span>Timeline</span></h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">April 15 – April 22</div>
+            <h3 class="timeline-title">Phase 0: Setup & Hygiene</h3>
+            <p class="timeline-desc">Foundation work before a single ad goes live. Tracking, pixels, audiences, and creative delivery.</p>
+            <div class="timeline-tasks">
+              <span class="task-tag">Meta Pixel + CAPI</span>
+              <span class="task-tag">Custom audiences</span>
+              <span class="task-tag">Lookalikes built</span>
+              <span class="task-tag">UTM structure</span>
+            </div>
+          </div>
+          <div class="timeline-marker">0</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">April 23 – May 7</div>
+            <h3 class="timeline-title">Phase 1: Spark</h3>
+            <p class="timeline-desc">Awareness push. Drive traffic to gateway landing page and capture emails. Test gated vs open page.</p>
+            <div class="timeline-tasks">
+              <span class="task-tag">Hero video ads</span>
+              <span class="task-tag">Carousel ads</span>
+              <span class="task-tag">A/B test gate</span>
+              <span class="task-tag">Email capture</span>
+            </div>
+          </div>
+          <div class="timeline-marker">1</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">May 8 – May 20</div>
+            <h3 class="timeline-title">Phase 2: Story</h3>
+            <p class="timeline-desc">Deepen connection with TJ's origin story. Retarget warm audiences with testimonials and behind-the-scenes.</p>
+            <div class="timeline-tasks">
+              <span class="task-tag">Long-form video</span>
+              <span class="task-tag">Testimonials</span>
+              <span class="task-tag">Behind-the-scenes</span>
+              <span class="task-tag">Retargeting</span>
+            </div>
+          </div>
+          <div class="timeline-marker">2</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">May 21 – May 31</div>
+            <h3 class="timeline-title">Phase 3: Launch</h3>
+            <p class="timeline-desc">Conversion push. Countdown urgency, social proof, and event promotion. Maximum spend.</p>
+            <div class="timeline-tasks">
+              <span class="task-tag">Countdown ads</span>
+              <span class="task-tag">Social proof</span>
+              <span class="task-tag">Event promo</span>
+              <span class="task-tag">Purchase CTA</span>
+            </div>
+          </div>
+          <div class="timeline-marker">3</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date">June 1+</div>
+            <h3 class="timeline-title">Phase 4: Sustain</h3>
+            <p class="timeline-desc">Evergreen campaign. Ongoing retargeting, fresh creatives monthly, lookalike expansion from purchasers.</p>
+            <div class="timeline-tasks">
+              <span class="task-tag">Evergreen ads</span>
+              <span class="task-tag">UGC rotation</span>
+              <span class="task-tag">Seasonal hooks</span>
+              <span class="task-tag">Press features</span>
+            </div>
+          </div>
+          <div class="timeline-marker">4</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testing Section -->
+  <section class="section">
+    <div class="container">
+      <div class="testing-card">
+        <div class="testing-content">
+          <div>
+            <h3 class="testing-title serif">Gateway Page A/B Test</h3>
+            <p class="testing-desc">Before full rollout, we test the gated landing page to validate the FOMO strategy. If it underperforms, we pivot quickly.</p>
+            <span class="testing-badge">April 23 – April 29</span>
+          </div>
+          <div class="testing-steps">
+            <div class="testing-step">
+              <div class="step-num">1</div>
+              <div class="step-text">Split traffic 50/50 — gated page vs direct store/Amazon</div>
+            </div>
+            <div class="testing-step">
+              <div class="step-num">2</div>
+              <div class="step-text">Measure: email capture rate, bounce rate, time on page, conversions</div>
+            </div>
+            <div class="testing-step">
+              <div class="step-num">3</div>
+              <div class="step-text">Decision point (April 30): If CVR below 25%, pivot to open page</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Phases Section -->
+  <section class="section section-dark" id="phases">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Strategy</span>
+        <h2 class="section-title serif">Campaign <span>Phases</span></h2>
+      </div>
+
+      <div class="phases-grid">
+        <div class="phase-card">
+          <div class="phase-number">0</div>
+          <h3 class="phase-name">Setup & Hygiene</h3>
+          <div class="phase-dates">April 15 – 22</div>
+          <p class="phase-goal">Non-negotiable pre-launch foundation. No ads go live until this is complete.</p>
+          <ul class="phase-list">
+            <li>Finalize gateway landing page</li>
+            <li>Install Meta Pixel + Conversions API</li>
+            <li>Set up custom events</li>
+            <li>Build lookalike audiences (1%, 3%, 5%)</li>
+            <li>UTM structure finalized</li>
+            <li>Creative assets delivered</li>
+          </ul>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-number">1</div>
+          <h3 class="phase-name">Spark</h3>
+          <div class="phase-dates">April 23 – May 7</div>
+          <p class="phase-goal">Build buzz, drive to gateway landing page, capture emails.</p>
+          <ul class="phase-list">
+            <li>Hero video (15-30s) — TJ speaking to camera</li>
+            <li>Carousel — "11 schools. 1 dream."</li>
+            <li>Static quote ads</li>
+            <li>A/B test gated vs open page</li>
+            <li>CTA: "Get early access"</li>
+          </ul>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-number">2</div>
+          <h3 class="phase-name">Story</h3>
+          <div class="phase-dates">May 8 – 20</div>
+          <p class="phase-goal">Deepen connection, share TJ's journey, build trust.</p>
+          <ul class="phase-list">
+            <li>Long-form video (60-90s) — origin story</li>
+            <li>Testimonial clips from early readers</li>
+            <li>Behind-the-scenes content</li>
+            <li>Retarget all Phase 1 engagers</li>
+            <li>CTA: "Read a free chapter"</li>
+          </ul>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-number">3</div>
+          <h3 class="phase-name">Launch</h3>
+          <div class="phase-dates">May 21 – 31</div>
+          <p class="phase-goal">Drive purchases, event registrations, maximum urgency.</p>
+          <ul class="phase-list">
+            <li>Countdown urgency ads</li>
+            <li>Social proof stack</li>
+            <li>Author thank-you video</li>
+            <li>Event promotion</li>
+            <li>CTA: "Order now"</li>
+          </ul>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-number">4</div>
+          <h3 class="phase-name">Sustain</h3>
+          <div class="phase-dates">June 1+</div>
+          <p class="phase-goal">Ongoing sales, retargeting, evergreen awareness.</p>
+          <ul class="phase-list">
+            <li>Retarget all past engagers</li>
+            <li>Rotate fresh creatives monthly</li>
+            <li>Lookalike expansion from purchasers</li>
+            <li>Seasonal hooks (Mother's Day, gift guides)</li>
+            <li>Press/media mentions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audience Section -->
+  <section class="section section-dark" id="audience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Who We're Reaching</span>
+        <h2 class="section-title serif">Target <span>Audiences</span></h2>
+      </div>
+
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="audience-icon">👩‍💼</div>
+          <h3 class="audience-title">Interest-Based</h3>
+          <ul class="audience-list">
+            <li>Brené Brown followers</li>
+            <li>Sheryl Sandberg fans</li>
+            <li>Michelle Obama admirers</li>
+            <li>Women in leadership</li>
+            <li>Work-life balance seekers</li>
+            <li>Memoir readers</li>
+          </ul>
+        </div>
+
+        <div class="audience-card">
+          <div class="audience-icon">🎯</div>
+          <h3 class="audience-title">Lookalike Audiences</h3>
+          <ul class="audience-list">
+            <li>Podcast listeners (1%, 3%, 5%)</li>
+            <li>Website visitors</li>
+            <li>Existing email list</li>
+            <li>Gateway page completers</li>
+            <li>Video viewers (50%+)</li>
+            <li>Purchasers (Phase 4)</li>
+          </ul>
+        </div>
+
+        <div class="audience-card">
+          <div class="audience-icon">💼</div>
+          <h3 class="audience-title">Professional Targeting</h3>
+          <ul class="audience-list">
+            <li>HR professionals</li>
+            <li>Legal industry</li>
+            <li>Tech executives</li>
+            <li>C-suite titles</li>
+            <li>DEI advocates</li>
+            <li>Women 28-55</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Creative Hooks Section -->
+  <section class="section section-alt" id="creative">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Messaging</span>
+        <h2 class="section-title serif">Creative <span>Hooks</span></h2>
+      </div>
+
+      <div class="hooks-container">
+        <div class="hook-item">
+          <span class="hook-type">Contrarian</span>
+          <p class="hook-text">"This isn't a 'lean in' book. It's a 'stand tall' book."</p>
+        </div>
+        <div class="hook-item">
+          <span class="hook-type">Identity</span>
+          <p class="hook-text">"For the woman who's tired of compartmentalizing."</p>
+        </div>
+        <div class="hook-item">
+          <span class="hook-type">Curiosity</span>
+          <p class="hook-text">"She attended 11 schools before 18. Here's what she learned."</p>
+        </div>
+        <div class="hook-item">
+          <span class="hook-type">Aspirational</span>
+          <p class="hook-text">"Lead without losing yourself."</p>
+        </div>
+        <div class="hook-item">
+          <span class="hook-type">Social Proof</span>
+          <p class="hook-text">"2024 Top Women in Media & Ad Tech. Now, her story."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video References Section -->
+  <section class="section" id="references">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Inspiration</span>
+        <h2 class="section-title serif">Video <span>References</span></h2>
+      </div>
+
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-thumb"></div>
+          <div class="video-info">
+            <h4 class="video-title">Direct-to-Camera</h4>
+            <p class="video-desc">Brené Brown's raw, personal, no-frills speaking style. Conversational and vulnerable.</p>
+            <a href="https://brenebrown.com/" target="_blank" class="video-link">View Reference →</a>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb"></div>
+          <div class="video-info">
+            <h4 class="video-title">Memoir Documentary</h4>
+            <p class="video-desc">Michelle Obama's "Becoming" Netflix trailer — personal journey + book tour footage.</p>
+            <a href="https://deadline.com/video/becoming-trailer-michelle-obama-netflix-movie/" target="_blank" class="video-link">View Reference →</a>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb"></div>
+          <div class="video-info">
+            <h4 class="video-title">Book Trailers</h4>
+            <p class="video-desc">22 Epic Book Trailers compilation — various styles from text-based to cinematic.</p>
+            <a href="https://rocketexpansion.com/book-trailers-examples/" target="_blank" class="video-link">View Reference →</a>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb"></div>
+          <div class="video-info">
+            <h4 class="video-title">Testimonial Videos</h4>
+            <p class="video-desc">How to structure reader reactions and endorsement videos for trust-building.</p>
+            <a href="https://newshelves.com/types-of-book-marketing-videos-and-how-to-use-them/" target="_blank" class="video-link">View Reference →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2 class="cta-title serif">Ready to <span>launch?</span></h2>
+      <p class="cta-subtitle">Let's bring this strategy to life and make the Suits & Pajamas book launch unforgettable.</p>
+      <a href="mailto:tj@suitsandpajamas.com" class="cta-button">
+        Let's Get Started
+        <span>→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <div class="nav-logo-icon"></div>
+      <div class="nav-logo-text">
+        <span style="color: var(--cream);">Suits &</span>
+        <span>Pajamas™</span>
+      </div>
+    </div>
+    <p class="footer-text">
+      Meta Ads Strategy Document · April 2026<br>
+      Prepared for <a href="https://www.suitsandpajamas.com" target="_blank">suitsandpajamas.com</a>
+    </p>
+  </footer>
+
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('hidden');
+      }, 2000);
+    });
+
+    // Progress bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = scrolled + '%';
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animatable elements
+    document.querySelectorAll('.timeline-item, .phase-card, .audience-card, .hook-item, .video-card').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
